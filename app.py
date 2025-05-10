@@ -11,8 +11,9 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('indonesian'))
 
 # === Load model dan vectorizer yang sudah dilatih ===
-model = joblib.load("/naive_bayes_model.pkl")
-vectorizer = joblib.load("/tfidf_vectorizer.pkl")
+BASE_DIR = os.path.dirname(__file__)
+model = joblib.load(os.path.join(BASE_DIR, "model.pkl"))
+vectorizer = joblib.load(os.path.join(BASE_DIR, "vectorizer.pkl"))
 
 # === Load summarizer ===
 summarizer = pipeline("summarization", model="google/pegasus-cnn_dailymail")
